@@ -9,8 +9,8 @@ import torch.nn as nn
 # 加载模型
 model = models.resnet18(pretrained=False)
 num_ftrs = model.fc.in_features
-model.fc = nn.Linear(num_ftrs, 6)  # 假设您有3个类别
-model.load_state_dict(torch.load('model_weights.pth'))
+model.fc = nn.Linear(num_ftrs, 5)  # 假设您有3个类别
+model.load_state_dict(torch.load('model_weights_resnet18.pth'))
 model.eval()
 
 # 定义转换
@@ -21,7 +21,7 @@ transform = transforms.Compose([
 ])
 
 # 类别
-classes = ['deer', 'snake','bird','dog','other']
+classes = ['bird','dog','other','snake']
 
 # 初始化摄像头
 cap = cv2.VideoCapture(0)
